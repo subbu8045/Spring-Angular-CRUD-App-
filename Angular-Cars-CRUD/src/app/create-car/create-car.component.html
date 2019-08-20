@@ -1,0 +1,36 @@
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Create A New Car</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="createForm" class="create-form">
+        <mat-label style="color:red"> * Required</mat-label>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="make" formControlName="make" #make required>
+        <!-- <mat-error style="height:auto" *ngIf="createForm.controls['make'].errors.required">
+          make is <strong>required</strong>
+        </mat-error> -->
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="model" formControlName="model" #model required>
+      </mat-form-field>
+      <mat-form-field class="field-full-width" hintLabel="Eg: 1994">
+        <input matInput type="text" pattern="[0-9]*" placeholder="Year (YYYY)" formControlName="year" maxlength="4" minlength="4"  #year required>
+      </mat-form-field>
+        <mat-form-field class="field-full-width">
+          <input matInput placeholder="transmission" formControlName="transmission" #transmission required>
+        </mat-form-field>
+          <mat-form-field class="field-full-width">
+            <input matInput placeholder="type" formControlName="type" #type required>
+          </mat-form-field>
+      <mat-divider></mat-divider>
+      <br><br>
+      <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
+      <button type="submit" (click)="addCar(make.value, model.value, year.value, transmission.value, type.value)"
+        [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+    </form>
+  </mat-card>
+</div>

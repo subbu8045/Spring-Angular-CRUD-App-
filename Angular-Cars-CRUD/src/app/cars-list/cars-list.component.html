@@ -1,0 +1,47 @@
+<div>
+  <br>
+  <mat-card>
+    <button mat-raised-button color="primary" routerLink="/create">Create New Issue</button>
+    <br><br>
+    <mat-divider></mat-divider>
+    <table mat-table [dataSource]="cars">
+
+      <ng-container matColumnDef="make">
+        <th mat-header-cell *matHeaderCellDef>Make</th>
+        <td mat-cell *matCellDef="let element"> {{element.make}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="model">
+        <th mat-header-cell *matHeaderCellDef>Model</th>
+        <td mat-cell *matCellDef="let element"> {{element.model}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="year">
+        <th mat-header-cell *matHeaderCellDef>Year</th>
+        <td mat-cell *matCellDef="let element"> {{element.year}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="transmission">
+        <th mat-header-cell *matHeaderCellDef>Transmission</th>
+        <td mat-cell *matCellDef="let element"> {{element.transmission}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="mat-column-right">Actions</th>
+        <td mat-cell *matCellDef="let element" class="mat-column-right">
+          <button mat-button color="primary" (click)="editCar(element.id)">Edit</button>
+          <button mat-button color="warn" (click)="deleteCar(element.id)">Delete</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+  </mat-card>
+</div>

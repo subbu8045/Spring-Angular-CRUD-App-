@@ -1,0 +1,34 @@
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Update Car</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="updateForm" class="edit-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Make" formControlName="make" #make required> 
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Model" formControlName="model" #model required>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput type="text" pattern="[0-9]*" placeholder="Year (YYYY)" formControlName="year" maxlength="4"
+          minlength="4" #year required>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Transmission" formControlName="transmission" #transmission required> 
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Type" formControlName="type" #type>
+      </mat-form-field>
+
+      <mat-divider></mat-divider>
+      <br><br>
+      <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
+      <button type="submit" (click)="updateCar(make.value, model.value, year.value, transmission.value, type.value)"
+        [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary">Save</button>
+    </form>
+  </mat-card>
+</div>
